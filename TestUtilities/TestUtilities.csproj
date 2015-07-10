@@ -52,6 +52,8 @@
     <Compile Include="Comunication\TestTcpConnection.cs" />
     <Compile Include="Cryptography\TestCryptoHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\serializable.cs" />
+    <Compile Include="Serialization\TestBinarySerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
