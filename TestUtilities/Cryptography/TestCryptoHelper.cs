@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System;
+using System.Security.Cryptography;
 using NUnit.Framework;
 using Utilities.Cryptography;
 
@@ -6,7 +7,7 @@ namespace TestUtilities.Cryptography {
 	[TestFixture]
 	public class TestCryptoHelper {
 
-
+	
 		[Test]
 		public void EncryptDecrypt() {
 

@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Comunication\TCPServer.cs" />
+    <Compile Include="Comunication\TcpConnection.cs" />
     <Compile Include="Cryptography\CryptoHelper.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />
     <Compile Include="Logging\ILogger.cs" />
