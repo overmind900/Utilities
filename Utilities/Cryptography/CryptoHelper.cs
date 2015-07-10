@@ -1,9 +1,14 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
+using System.Text;
+using Utilities.Serialization;
 
 namespace Utilities.Cryptography {
 	public static class CryptoHelper {
 
+		public static T Decrypt<T>( byte[] data, ICryptoTransform decryptor ) {
+			return Encoding.UTF8.GetBytes( Decrypt( data, decryptor ) ).FromByteArrayToObject<T>();
+		}
 
 		public static string Decrypt( byte[] data, ICryptoTransform decryptor ) {
 			using ( MemoryStream msDecrypt = new MemoryStream( data ) ) {
@@ -15,6 +20,11 @@ namespace Utilities.Cryptography {
 					}
 				}
 			}
+		}
+
+		public static byte[] Encrypt<T>( T data, ICryptoTransform encryptor ) {
+			//must be BinarySerializable
+			return Encrypt( Encoding.UTF8.GetString(data.ToByteArray()), encryptor );
 		}
 
 		public static byte[] Encrypt( string data, ICryptoTransform encryptor ) {

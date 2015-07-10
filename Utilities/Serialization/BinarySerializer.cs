@@ -2,8 +2,17 @@
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 namespace Utilities.Serialization {
+	/// <summary>
+	/// Static extensions methods to Serialize objects into and from byte[]
+	/// </summary>
 	public static class BinarySerializer {
 		
+		/// <summary>
+		/// Serialize objects into byte[], object must be [Serializable]
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="obj"></param>
+		/// <returns></returns>
 		public static byte[] ToByteArray<T>(this T obj ) {
 			BinaryFormatter bf = new BinaryFormatter();
 			using ( MemoryStream ms = new MemoryStream() ) {
@@ -12,6 +21,12 @@ namespace Utilities.Serialization {
 			}
 		}
 
+		/// <summary>
+		/// Desterilize objects from byte[], object must be [Serializable] and should implement IConvertible
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="arrBytes"></param>
+		/// <returns></returns>
 		public static T FromByteArrayToObject<T>(this byte[] arrBytes ) {
 			using ( MemoryStream memStream = new MemoryStream() ) {
 				BinaryFormatter binForm = new BinaryFormatter();
