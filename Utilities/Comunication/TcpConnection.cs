@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
+using System.Threading.Tasks;
 namespace Utilities.Comunication {
 	public class TcpConnection {
 		protected TcpClient m_Client;
@@ -51,7 +52,14 @@ namespace Utilities.Comunication {
 			m_Stream.Write( package, 0, package.Length );
 		}
 
-		//TODO: SendAsync
+		public virtual Task SendAsync( byte[] data ) {
+			if ( !m_Client.Connected ) {
+				Logging.Logger.LogError( "Trying to send when no connection available" );
+			}
+			//4 bytes containing the length of the data being sent
+			byte[] package = BitConverter.GetBytes( data.Length ).Concat( data ).ToArray();
+			return m_Stream.WriteAsync( package, 0, package.Length );
+		}
 
 		public virtual byte[] Recieve() {
 			if ( !m_Client.Connected ) {
