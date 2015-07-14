@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-namespace Utilities.Serialization {
+// ReSharper disable once CheckNamespace
+namespace Utilities {
 	/// <summary>
 	/// Static extensions methods to Serialize objects into and from byte[]
 	/// </summary>
-	public static class BinarySerializer {
+	public static partial class Extension {
 		
 		/// <summary>
 		/// Serialize objects into byte[], object must be [Serializable]

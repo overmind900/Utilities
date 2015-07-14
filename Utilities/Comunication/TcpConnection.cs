@@ -38,9 +38,9 @@ namespace Utilities.Comunication {
 		}
 
 		public virtual void Close() {
-			if ( m_Client.Connected ) {
-				m_Client.Close();
-			}
+			if( !m_Client.Connected ) return;
+			m_Client.Close();
+			m_Stream.Close();
 		}
 
 		public virtual void Send( byte[] data ) {
@@ -80,7 +80,7 @@ namespace Utilities.Comunication {
 			int recieved = 0;
 			while ( recieved < bytesToRead ) {
 				byte[] buffer = new byte[1000];
-				int reed = 0;
+				int reed;
 				recieved += reed = m_Stream.Read( buffer, 0, Math.Min( 1000, bytesToRead - recieved ) );
 				recieveBuffer.Add( buffer.Take( reed ).ToArray() );
 			}

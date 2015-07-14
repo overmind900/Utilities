@@ -1,10 +1,9 @@
 ﻿using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using Utilities.Serialization;
-
-namespace Utilities.Cryptography {
-	public static class CryptoHelper {
+// ReSharper disable once CheckNamespace
+namespace Utilities {
+	public static partial class Extension {
 
 		public static T Decrypt<T>( byte[] data, ICryptoTransform decryptor ) {
 			return Encoding.UTF8.GetBytes( Decrypt( data, decryptor ) ).FromByteArrayToObject<T>();
