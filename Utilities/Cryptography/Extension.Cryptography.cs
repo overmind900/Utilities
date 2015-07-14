@@ -16,7 +16,19 @@ namespace Utilities {
 		/// <param name="decryptor">System.Security.Cryptography.ICryptoTransform</param>
 		/// <returns>T</returns>
 		public static T Decrypt<T>(this byte[] data, ICryptoTransform decryptor ) {
-			return Encoding.UTF8.GetBytes( Decrypt( data, decryptor ) ).FromByteArrayToObject<T>();
+			return Encoding.UTF8.GetBytes( data.Decrypt( decryptor ) ).FromByteArray<T>();
+		}
+
+		/// <summary>
+		/// Encrypts an object with the provided ICryptoTransform
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="data">a [Serializable] object</param>
+		/// <param name="encryptor">System.Security.Cryptography.ICryptoTransform</param>
+		/// <returns>System.byte[]</returns>
+		public static byte[] Encrypt<T>(this T data, ICryptoTransform encryptor ) {
+			//must be BinarySerializable
+			return Encoding.UTF8.GetString(data.ToByteArray()).Encrypt( encryptor );
 		}
 
 		/// <summary>
@@ -35,18 +47,6 @@ namespace Utilities {
 					}
 				}
 			}
-		}
-
-		/// <summary>
-		/// Encrypts an object with the provided ICryptoTransform
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="data">a [Serializable] object</param>
-		/// <param name="encryptor">System.Security.Cryptography.ICryptoTransform</param>
-		/// <returns>System.byte[]</returns>
-		public static byte[] Encrypt<T>(this T data, ICryptoTransform encryptor ) {
-			//must be BinarySerializable
-			return Encrypt( Encoding.UTF8.GetString(data.ToByteArray()), encryptor );
 		}
 
 		/// <summary>

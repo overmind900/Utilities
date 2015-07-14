@@ -34,12 +34,20 @@ namespace TestUtilities.Serialization {
 		}
 
 		[Test]
+		public void TestString() {
+			const string orignal = "Hello World";
+			byte[] byteArray = orignal.ToByteArray();
+			string actual = byteArray.FromByteArray<string>();
+			Assert.AreEqual( orignal, actual );
+		}
+
+		[Test]
 		public void SerializeDeserialize() {
 
 			TestBinarySerializerClass orignal = new TestBinarySerializerClass() { MyInt = 4, MyString = "Hello World" };
 			byte[] serialized = orignal.ToByteArray();
 			Assert.IsNotEmpty( serialized );
-			TestBinarySerializerClass deserialized = serialized.FromByteArrayToObject<TestBinarySerializerClass>();
+			TestBinarySerializerClass deserialized = serialized.FromByteArray<TestBinarySerializerClass>();
 			Assert.AreNotSame( orignal, deserialized );
 			Assert.AreEqual( orignal, deserialized );
 
@@ -141,7 +149,7 @@ namespace TestUtilities.Serialization {
 			TestBinarySerializerClassB orignal = new TestBinarySerializerClassB() { MyInt = 4, MyString = "Hello World", MyDouble = 4.2 };
 			byte[] serialized = orignal.ToByteArray();
 			Assert.IsNotEmpty( serialized );
-			TestBinarySerializerClassB deserialized = serialized.FromByteArrayToObject<TestBinarySerializerClassB>();
+			TestBinarySerializerClassB deserialized = serialized.FromByteArray<TestBinarySerializerClassB>();
 			Assert.AreNotSame( orignal, deserialized );
 			Assert.AreEqual( orignal, deserialized );
 		}
@@ -151,7 +159,7 @@ namespace TestUtilities.Serialization {
 			TestBinarySerializerClass orignal = new TestBinarySerializerClassB() { MyInt = 4, MyString = "Hello World", MyDouble = 4.2 };
 			byte[] serialized = orignal.ToByteArray();
 			Assert.IsNotEmpty( serialized );
-			TestBinarySerializerClass deserialized = serialized.FromByteArrayToObject<TestBinarySerializerClass>();
+			TestBinarySerializerClass deserialized = serialized.FromByteArray<TestBinarySerializerClass>();
 			Assert.AreNotSame( orignal, deserialized );
 			Assert.AreEqual( orignal, deserialized );
 			Assert.AreEqual( 4.2, ( (TestBinarySerializerClassB)deserialized ).MyDouble );

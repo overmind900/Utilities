@@ -28,7 +28,7 @@ namespace Utilities {
 		/// <typeparam name="T"></typeparam>
 		/// <param name="bytes"></param>
 		/// <returns></returns>
-		public static T FromByteArrayToObject<T>(this byte[] bytes ) {
+		public static T FromByteArray<T>(this byte[] bytes ) {
 			using ( MemoryStream memStream = new MemoryStream() ) {
 				BinaryFormatter binForm = new BinaryFormatter();
 				memStream.Write( bytes, 0, bytes.Length );
