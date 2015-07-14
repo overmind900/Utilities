@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using Utilities.Serialization;
+using Utilities;
+
 namespace TestUtilities.Serialization {
 	[TestFixture]
 	public class TestBinarySerializer {

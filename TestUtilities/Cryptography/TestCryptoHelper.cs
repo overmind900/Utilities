@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Security.Cryptography;
 using NUnit.Framework;
-using Utilities.Cryptography;
+using Utilities;
 
 namespace TestUtilities.Cryptography {
 	[TestFixture]
@@ -16,11 +16,11 @@ namespace TestUtilities.Cryptography {
 				ICryptoTransform decryptor = aesAlg.CreateDecryptor();
 				const string orignal = "Hello World";
 
-				byte[] encrypted = CryptoHelper.Encrypt( orignal, encryptor );
+				byte[] encrypted = orignal.Encrypt( encryptor );
 				Assert.NotNull( encrypted );
 				Assert.IsNotEmpty( encrypted );
 
-				string decrypted = CryptoHelper.Decrypt( encrypted, decryptor );
+				string decrypted = encrypted.Decrypt( decryptor );
 
 				Assert.AreEqual( orignal, decrypted );
 			}
