@@ -16,5 +16,16 @@ namespace Utilities {
 				  action( item );
 			}
 		}
+
+		/// <summary>
+		/// Repeat an action x times
+		/// </summary>
+		/// <param name="x">int</param>
+		/// <param name="action">System.Action</param>
+		public static void Times( this int x, Action action ) {
+			for( int i = 0; i < x; i++ ) {
+				action();
+			}
+		}
 	}
 }
