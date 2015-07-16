@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Compression\TestCompression.XML.cs" />
+    <Compile Include="Compression\TestCompression.cs" />
     <Compile Include="Comunication\TestTcpConnection.cs" />
     <Compile Include="Cryptography\TestCryptography.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
