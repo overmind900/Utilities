@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Utilities;
 namespace TestUtilities.Serialization {
+	[TestFixture]
 	public class TestProtoBufSerializer {
 		
 		[Test]

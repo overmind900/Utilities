@@ -8,7 +8,7 @@ namespace Utilities
 {
 	public static partial class Extension {
 
-		public static string SerializeToJson( this object obj ) {
+		public static string ToJson( this object obj ) {
 			var jsonSerializer = new DataContractJsonSerializer( obj.GetType() );
 			string returnValue = "";
 			using ( var memoryStream = new MemoryStream() ) {
@@ -21,7 +21,7 @@ namespace Utilities
 			return returnValue;
 		}
 
-		public static T DeserializeFromJson<T>( this string json ) {
+		public static T FromJson<T>( this string json ) {
 			T returnValue;
 			using ( var memoryStream = new MemoryStream() ) {
 				byte[] jsonBytes = Encoding.UTF8.GetBytes( json );
