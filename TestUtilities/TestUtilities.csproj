@@ -57,6 +57,7 @@
     <Compile Include="Cryptography\TestCryptography.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\TestBinarySerializer.cs" />
+    <Compile Include="Serialization\TestProtoBufSerializer.cs" />
     <Compile Include="TestExtension.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -34,13 +34,21 @@ namespace TestUtilities.Serialization {
 		}
 
 		[Test]
-		public void TestString() {
-			const string orignal = "Hello World";
-			byte[] byteArray = orignal.ToByteArray();
-			string actual = byteArray.FromByteArray<string>();
-			Assert.AreEqual( orignal, actual );
+		[TestCase( "Hello" )]
+		[TestCase( 5 )]
+		[TestCase( 4L )]
+		[TestCase( 5.0D )]
+		[TestCase( 4.0F )]
+		[TestCase( true )]
+		public void BinarySerializer_Simple_obj<T>( T obj ) {
+			byte[] serilized = obj.ToByteArray();
+			Assert.IsNotEmpty( serilized );
+			T decerilised = serilized.FromByteArray<T>();
+			Assert.AreEqual( obj, decerilised );
+			Assert.AreNotSame( obj, decerilised );
 		}
 
+		
 		[Test]
 		public void SerializeDeserialize() {
 
